@@ -2,13 +2,12 @@
   "db": {
     "host": "localhost",
     "port": 27017,
-    "url": "mongodb+srv://user:lSUwTf6NBbhrbDuR@test.ocney.mongodb.net/test_db?retryWrites=true&w=majority",
+    "url": "",
     "database": "quick-company",
     "password": "",
     "name": "db",
     "user": "",
     "useNewUrlParser": true,
-    "connector": "mongodb",
-    "protocol": "mongodb+srv"
+    "connector": "mongodb"
   }
 }
