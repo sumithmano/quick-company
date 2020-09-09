@@ -7,46 +7,46 @@ var senderAddress = 'info@quickcompany.com';
 
 module.exports = function (User) {
 
-    //send verification email after registration
-    User.afterRemote('create', function (context, user, next) {
-        var options = {
-            type: 'email',
-            to: user.email,
-            from: senderAddress,
-            subject: 'Thanks for registering.',
-            template: path.resolve(__dirname, '../../server/views/verify.ejs'),
-            redirect: '/verified',
-            user: user
-        };
+    // //send verification email after registration
+    // User.afterRemote('create', function (context, user, next) {
+    //     var options = {
+    //         type: 'email',
+    //         to: user.email,
+    //         from: senderAddress,
+    //         subject: 'Thanks for registering.',
+    //         template: path.resolve(__dirname, '../../server/views/verify.ejs'),
+    //         redirect: '/verified',
+    //         user: user
+    //     };
 
-        user.verify(options, function (err, response) {
-            if (err) {
-                User.deleteById(user.id);
-                return next(err);
-            }
-            next()
-        });
-    });
+    //     user.verify(options, function (err, response) {
+    //         if (err) {
+    //             User.deleteById(user.id);
+    //             return next(err);
+    //         }
+    //         next()
+    //     });
+    // });
 
-    User.afterRemote('login', function (context, user, next) {
-        var options = {
-            // type: 'email',
-            to:"sumithedadan@gmail.com",
-            from: senderAddress,
-            subject: 'Thanks for login.',
-            text: 'Login Text',
-            html: 'my <em>html</em>'
-            // template: path.resolve(__dirname, '../../server/views/verify.ejs'),
-            // redirect: '/verified',
-            // user: user
-        };
+    // User.afterRemote('login', function (context, user, next) {
+    //     var options = {
+    //         // type: 'email',
+    //         to:"sumithedadan@gmail.com",
+    //         from: senderAddress,
+    //         subject: 'Thanks for login.',
+    //         text: 'Login Text',
+    //         html: 'my <em>html</em>'
+    //         // template: path.resolve(__dirname, '../../server/views/verify.ejs'),
+    //         // redirect: '/verified',
+    //         // user: user
+    //     };
 
-        User.app.models.Email.send(options, function(err, mail) {
-            console.log('email sent!');
-            console.log('err', err)
-            next()
-        });
-    });
+    //     User.app.models.Email.send(options, function(err, mail) {
+    //         console.log('email sent!');
+    //         console.log('err', err)
+    //         next()
+    //     });
+    // });
 
     // //send password reset link when requested
     // User.on('reset', function (info) {
