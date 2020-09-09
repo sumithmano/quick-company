@@ -28,6 +28,26 @@ module.exports = function (User) {
         });
     });
 
+    User.afterRemote('login', function (context, user, next) {
+        var options = {
+            // type: 'email',
+            to:"sumithedadan@gmail.com",
+            from: senderAddress,
+            subject: 'Thanks for login.',
+            text: 'Login Text',
+            html: 'my <em>html</em>'
+            // template: path.resolve(__dirname, '../../server/views/verify.ejs'),
+            // redirect: '/verified',
+            // user: user
+        };
+
+        User.app.models.Email.send(options, function(err, mail) {
+            console.log('email sent!');
+            console.log('err', err)
+            next()
+        });
+    });
+
     // //send password reset link when requested
     // User.on('reset', function (info) {
     //     debugger
